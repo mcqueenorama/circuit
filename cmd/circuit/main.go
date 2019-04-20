@@ -39,7 +39,7 @@ func main() {
 		{
 			Name:   "keygen",
 			Usage:  "Generate a new random HMAC key",
-			Action: keygen,
+			Action: keygenPrint,
 		},
 		{
 			Name:   "ls",
@@ -219,6 +219,18 @@ func main() {
 				cli.StringFlag{Name: "discover", Value: "228.8.8.8:8822", Usage: "Multicast address for peer server discovery", EnvVar: "CIRCUIT_DISCOVER"},
 				cli.BoolFlag{Name: "scrub", Usage: "scrub the process anchor automatically on exit"},
 				cli.StringFlag{Name: "hmac", Value: "", Usage: "File containing HMAC credentials. Use RC4 encryption.", EnvVar: "CIRCUIT_HMAC"},
+			},
+		},
+		{
+			Name:   "runproc",
+			Usage:  "Run a process element and return output on stdout",
+			Action: runproc,
+			Flags: []cli.Flag{
+				cli.StringFlag{"dial, d", "", "circuit member to dial into"},
+				cli.StringFlag{"discover", "228.8.8.8:8822", "Multicast address for peer server discovery"},
+				cli.BoolFlag{"tag", "tag each output line with the anchor names (hostnames)"},
+				cli.BoolFlag{"all", "run the command across all hosts"},
+				cli.StringFlag{"hmac", "", "File containing HMAC credentials. Use RC4 encryption."},
 			},
 		},
 		{

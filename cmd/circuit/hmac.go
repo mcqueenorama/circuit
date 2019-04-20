@@ -17,7 +17,7 @@ import (
 	"github.com/urfave/cli"
 )
 
-func keygen(c *cli.Context) (err error) {
+func keygen(c *cli.Context) string {
 	rand.Seed(time.Now().UnixNano())
 	seed := make([]byte, 32)
 	for i := range seed {
@@ -25,6 +25,11 @@ func keygen(c *cli.Context) (err error) {
 	}
 	key := sha512.Sum512(seed)
 	text := base64.StdEncoding.EncodeToString(key[:])
-	fmt.Println(text)
+	return text
+}
+
+func keygenPrint(c *cli.Context) (err error) {
+
+	fmt.Println(keygen(c))
 	return
 }
