@@ -226,11 +226,11 @@ func main() {
 			Usage:  "Run a process element and return output on stdout",
 			Action: runproc,
 			Flags: []cli.Flag{
-				cli.StringFlag{"dial, d", "", "circuit member to dial into"},
-				cli.StringFlag{"discover", "228.8.8.8:8822", "Multicast address for peer server discovery"},
-				cli.BoolFlag{"tag", "tag each output line with the anchor names (hostnames)"},
-				cli.BoolFlag{"all", "run the command across all hosts"},
-				cli.StringFlag{"hmac", "", "File containing HMAC credentials. Use RC4 encryption."},
+				cli.StringFlag{Name: "dial, d", Value: "", Usage: "circuit member to dial into"},
+				cli.StringFlag{Name: "discover", Value: "228.8.8.8:8822", Usage: "Multicast address for peer server discovery"},
+				cli.BoolFlag{Name: "tag", Usage: "tag each output line with the anchor names (hostnames)"},
+				cli.BoolFlag{Name: "all", Usage: "run the command across all hosts"},
+				cli.StringFlag{Name: "hmac", Value: "", Usage: "File containing HMAC credentials. Use RC4 encryption."},
 			},
 		},
 		{
